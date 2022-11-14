@@ -12,7 +12,7 @@ public class MedioDeTransporte {
     {
         setTransportable(new ArrayList<ObjetoTransportable>(0));
         setCapacidadActual(0);
-        setCantidadMaxima(cantidadMaxima);
+        setCantidadMaxima(3);
         setCapacidadMaxima(capacidadMaxima);
         setDimensiones(dimensiones);
     }
@@ -58,6 +58,8 @@ public class MedioDeTransporte {
     }
 
 
-
-
+    public void cargar(ObjetoTransportable transportable) {
+        if (getTransportable().size() >= getCapacidadMaxima()) return;
+        getTransportable().add(transportable);
+    }
 }
