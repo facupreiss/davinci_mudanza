@@ -1,4 +1,7 @@
+import sun.java2d.opengl.OGLContext;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MedioDeTransporte {
 
@@ -57,9 +60,27 @@ public class MedioDeTransporte {
         this.cantidadMaxima = cantidadMaxima;
     }
 
-
     public void cargar(ObjetoTransportable transportable) {
-        if (getTransportable().size() >= getCapacidadMaxima()) return;
-        getTransportable().add(transportable);
+        if (getTransportable().size() >= getCantidadMaxima())  {
+            System.out.println("Cantidad maxima excedida, su objeto no se cargo");
+            return;
+        }
+
+        if (getCapacidadMaxima()<=getCapacidadActual()+transportable.getPeso()) {
+            System.out.println("Peso maximo excedido, su objeto no se cargo");
+            return;
+        }
+            getTransportable().add(transportable);
+            setCapacidadActual(transportable.getPeso()+getCapacidadActual());
+            System.out.println("Su objeto " + transportable.getNombre() + " fue cargado");
+            System.out.println("Peso actual: " + getCapacidadActual());
     }
-}
+
+    public void descargar(ObjetoTransportable transportable) {
+        getTransportable().remove(transportable);
+        setCapacidadActual(getCapacidadActual()-transportable.getPeso());
+        System.out.println("Su objeto " + transportable.getNombre() +  " fue removido");
+        System.out.println("Peso actual: " + getCapacidadActual());
+        }
+    }
+

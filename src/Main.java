@@ -1,7 +1,8 @@
 public class Main {
     public static void main(String[] args) {
+
         MedioDeTransporte camionDisponible = new MedioDeTransporte(
-                500.0,
+                51.0,
                 new Dimensiones(2.5,1.5,4),
                 3
         );
@@ -33,6 +34,7 @@ public class Main {
         camionDisponible.cargar(sillaDeMetal);
         camionDisponible.cargar(televisor);
         camionDisponible.cargar(televisorViejo);
+        camionDisponible.descargar(silla);
 
     }
 }
